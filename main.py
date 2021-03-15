@@ -17,7 +17,9 @@ def guess_game():
 
         msg = "" # Empty message.
         
-        if int(guess) == num: # If the guess is rught print a message and quit the loop.
+        if guess != 'q':
+            break
+        elif int(guess) == num: # If the guess is rught print a message and quit the loop.
             print("Congrate you got it right!")
             message = print(f"{guess} is equal to {num} ")
             game_state = False
