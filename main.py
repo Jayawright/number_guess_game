@@ -3,10 +3,12 @@ import random
 # Number guess game, where the user has to guess a random number between 1-100, the program tells the user is lower
 # or higher and prompts ths user repeatedly untill the guess is correct. if the user enters than quit the program.
 
-def guess_game(num):
-
+def guess_game():
+    num = random.randint(1, 100) # random number between 0-100.
     game_state = True # If the guess is right quit the loop
-    #guess_num = random.randint(0, 100) # Random num between 0-100
+
+    print("""Welcome to my number guessing game. In order to win you have to correctly guess a random number.
+    Press 'q' to quit the game.""")
     
     while game_state:
         guess = input("Guess The number between 1-100: ") # User guess input prompt
@@ -15,20 +17,25 @@ def guess_game(num):
 
         msg = "" # Empty message.
         
-        if guess == num: # If the guess is rught print a message and quit the loop.
+        if int(guess) == num: # If the guess is rught print a message and quit the loop.
             print("Congrate you got it right!")
             message = print(f"{guess} is equal to {num} ")
             game_state = False
-
-        elif guess < num:
-            msg = "Lower"
-            message.format(guess, msg)
-
-        elif guess > num:
-            msg = "Higher"
-            message.format(guess, msg)
         
+        elif guess == 'q': # If the user types q the game quits
+            game_state = False 
 
-num_list = range(100) # List of  numbers 0-100
+        elif int(guess) < num:
+            msg = "Lower"
+            print(message.format(guess, msg))
+            continue
 
-
+        elif int(guess) > num:
+            msg = "Higher"
+            print(message.format(guess, msg))
+            continue
+        else:
+            print("Only Input Numbers!") # Fail-safe for non number inputs
+            pass
+        
+guess_game()
